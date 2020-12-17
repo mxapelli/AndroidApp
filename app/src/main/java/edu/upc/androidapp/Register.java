@@ -2,12 +2,14 @@ package edu.upc.androidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,8 +22,8 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        register =(TextView) findViewById(R.id.registerMessage);
         apiInterface = APIClient.getClient().create(APIInterface.class);
+
     }
 
     public void sendRegister(View view) {
@@ -41,14 +43,13 @@ public class Register extends AppCompatActivity {
                     String pswrd=usuario.getPswrd();
                     String uname=usuario.getUname();
                     Log.d("Usuario",uname+" "+pswrd);
-                    register.setTextColor(Color.parseColor("#008000"));
-                    register.setText("Registration succesfull! Go back and sign in");
-
+                    Toast toast = Toast.makeText(getApplicationContext(),"Registration succesfull! Go back and sign in", Toast.LENGTH_LONG);
+                    toast.show();
                 }
                 else{
                     Log.d("Error","Register failed");
-                    register.setTextColor(Color.parseColor("#CC0000"));
-                    register.setText("Register failed! Please try again");
+                    Toast toast = Toast.makeText(getApplicationContext(),"Register failed! Please try again", Toast.LENGTH_LONG);
+                    toast.show();
                 }
 
             }
@@ -60,6 +61,10 @@ public class Register extends AppCompatActivity {
 
             }
         });
+
+    }
+    public void goBack(View view) {
+        finish();
 
     }
 }
