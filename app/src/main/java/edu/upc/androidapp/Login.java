@@ -23,6 +23,8 @@ public class Login extends AppCompatActivity  {
     APIInterface apiInterface;
     TextView login;
     public static final String MY_PREFS_NAME = "user_pass_pref";
+    EditText uname;
+    EditText pswrd;
 
 
     @Override
@@ -30,8 +32,8 @@ public class Login extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         apiInterface = APIClient.getClient().create(APIInterface.class);
-        EditText uname= (EditText) findViewById(R.id.user);
-        EditText pswrd = (EditText) findViewById(R.id.password);
+        uname= (EditText) findViewById(R.id.user);
+        pswrd = (EditText) findViewById(R.id.password);
         Button login =(Button) findViewById(R.id.login);
         //Shared preferences
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
@@ -40,54 +42,44 @@ public class Login extends AppCompatActivity  {
         uname.setText(username);
         pswrd.setText(password);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username=uname.getText().toString();
-                String password=pswrd.getText().toString();
-                Call<Usuario> call=apiInterface.loginUser(new Usuario(username,password,"",""));
-                call.enqueue(new Callback<Usuario>() {
-                    @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                        Log.d("TAG",response.code()+"");
-                        if(response.code()==201){
-                            Usuario usuario = response.body();
-                            String pswrd=usuario.getPswrd();
-                            String uname=usuario.getUname();
-                            Log.d("Usuario",uname+" "+pswrd);
-                            //Guardando en Shared
-                            //SharedPreferences.Editor editor = prefs.edit();
-                            //editor.putString("email", username);
-                            //editor.putString("password", password);
-                            //editor.apply();
-                            openApp(uname);
-                        }
-                        else{
-                            Log.d("Error","Login failed");
-                            Toast toast = Toast.makeText(getApplicationContext(),"Login failed! Please try again", Toast.LENGTH_LONG);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    toast.show();
-                                }
-                            });
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
-                        call.cancel();
-                        Log.d("Error","Failure");
-                    }
-                });
-
-            }
-        });
-
     }
 
     public void sendLogin(View view) {
-        EditText uname= (EditText) findViewById(R.id.user);
-        EditText pswrd = (EditText) findViewById(R.id.password);
+        uname= (EditText) findViewById(R.id.user);
+        pswrd = (EditText) findViewById(R.id.password);
+        String username = uname.getText().toString();
+        String password = pswrd.getText().toString();
+        Call<Usuario> call=apiInterface.loginUser(new Usuario(username,password,"",""));
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                Log.d("TAG",response.code()+"");
+                if(response.code()==201){
+                    Usuario usuario = response.body();
+                    String pswrd=usuario.getPswrd();
+                    String uname=usuario.getUname();
+                    Log.d("Usuario",uname+" "+pswrd);
+                    //Guardando en Shared
+                    guardarSharedPreferences(uname, pswrd);
+                    openApp(uname);
+                }
+                else{
+                    Log.d("Error","Login failed");
+                    Toast toast = Toast.makeText(getApplicationContext(),"Login failed! Please try again", Toast.LENGTH_LONG);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            toast.show();
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                call.cancel();
+                Log.d("Error","Failure");
+            }
+        });
 
     }
 
@@ -99,6 +91,13 @@ public class Login extends AppCompatActivity  {
         Intent intent = new Intent(this, App.class);
         intent.putExtra("usuario", uname);
         startActivity(intent);
+    }
+    public void guardarSharedPreferences(String username, String password){
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("username", username);
+        editor.putString("password", password);
+        editor.commit();
     }
 
 
