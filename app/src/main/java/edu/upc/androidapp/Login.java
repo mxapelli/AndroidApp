@@ -34,7 +34,6 @@ public class Login extends AppCompatActivity  {
         apiInterface = APIClient.getClient().create(APIInterface.class);
         uname= (EditText) findViewById(R.id.user);
         pswrd = (EditText) findViewById(R.id.password);
-        Button login =(Button) findViewById(R.id.login);
         //Shared preferences
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
         String username = prefs.getString("username", "");
