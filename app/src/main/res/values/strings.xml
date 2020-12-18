@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">AndroidApp</string>
     <string name="welcome">Welcome:</string>
+    <string name="title_activity_app2">MainActivity</string>
+    <string name="title_me">Me</string>
+    <string name="title_shop">Shop</string>
+    <string name="title_info">Info</string>
 </resources>
