@@ -27,6 +27,8 @@ public class App extends AppCompatActivity {
         //welcome.setText("Welcome: "+ valor);
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        Fragment selectedFragment = new ProfileFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
     }
     public void sendLogout(View view){
