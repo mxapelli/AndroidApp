@@ -36,5 +36,10 @@ public class ShopFragment extends Fragment {
         shopList.add(new ShopItem("Lapiz","Información del Lapiz", R.mipmap.ic_lapiz_icon));
         shopList.add(new ShopItem("Gafas","Información de las Gafas", R.mipmap.ic_gafas_icon));
         shopList.add(new ShopItem("Red Bull","Información de Red Bull", R.mipmap.ic_redbull_icon));
+        shopList.add(new ShopItem("Red Bull","Información de Red Bull", R.mipmap.ic_redbull_icon));
+        shopList.add(new ShopItem("Red Bull","Información de Red Bull", R.mipmap.ic_redbull_icon));
+        shopList.add(new ShopItem("Red Bull","Información de Red Bull", R.mipmap.ic_redbull_icon));
+        shopList.add(new ShopItem("Red Bull","Información de Red Bull", R.mipmap.ic_redbull_icon));
+
     }
 }
