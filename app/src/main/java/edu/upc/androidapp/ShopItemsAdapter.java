@@ -29,6 +29,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
     public void onBindViewHolder(@NonNull ShopItemViewHolder holder, int position) {
         holder.txtName.setText(shopList.get(position).getName());
         holder.txtDescription.setText(shopList.get(position).getDescription());
+        holder.txtPrice.setText(shopList.get(position).getPrice());
         holder.image.setImageResource(shopList.get(position).getImageId());
     }
 
@@ -38,7 +39,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
     }
 
     public class ShopItemViewHolder extends RecyclerView.ViewHolder{
-        TextView txtName, txtDescription;
+        TextView txtName, txtDescription, txtPrice;
         ImageView image;
 
         public ShopItemViewHolder(View itemView){
@@ -46,6 +47,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
             txtName = (TextView) itemView.findViewById(R.id.nameProduct);
             txtDescription = (TextView) itemView.findViewById(R.id.descriptionProduct);
             image = (ImageView) itemView.findViewById(R.id.imageProduct);
+            txtPrice=(TextView) itemView.findViewById(R.id.priceProduct);
         }
     }
 }

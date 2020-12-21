@@ -18,6 +18,7 @@ import retrofit2.Response;
 public class SplashScreen extends AppCompatActivity {
     APIInterface apiInterface;
     public static final String MY_PREFS_NAME = "user_pass_pref";
+    String username;
 
 
     @Override
@@ -27,37 +28,43 @@ public class SplashScreen extends AppCompatActivity {
         apiInterface = APIClient.getClient().create(APIInterface.class);
         //Inicio guardado directo
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
-        String username = prefs.getString("username", "");
+        username = prefs.getString("username", "");
         String password = prefs.getString("password", "");
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Call<Usuario> call=apiInterface.loginUser(new Usuario(username,password,"",""));
-                call.enqueue(new Callback<Usuario>() {
-                    @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                        Log.d("TAG",response.code()+"");
-                        if(response.code()==201){
-                            Usuario usuario = response.body();
-                            String pswrd=usuario.getPswrd();
-                            String uname=usuario.getUname();
-                            Log.d("Usuario",uname+" "+pswrd);
-                            openApp(uname);
+                if (username.equals("")) {
+                    Intent intent = new Intent(SplashScreen.this, Login.class);
+                    startActivity(intent);
+                }
+                else{
+                    Call<Usuario> call=apiInterface.loginUser(new Usuario(username,password,"",""));
+                    call.enqueue(new Callback<Usuario>() {
+                        @Override
+                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                            Log.d("TAG",response.code()+"");
+                            if(response.code()==201){
+                                Usuario usuario = response.body();
+                                String pswrd=usuario.getPswrd();
+                                String uname=usuario.getUname();
+                                Log.d("Usuario",uname+" "+pswrd);
+                                openApp(uname);
+                            }
+                            else{
+                                Log.d("Error","No shared preference");
+                                Intent intent = new Intent(SplashScreen.this, Login.class);
+                                startActivity(intent);
+                            }
                         }
-                        else{
-                            Log.d("Error","No shared preference");
-                            Intent intent = new Intent(SplashScreen.this, Login.class);
-                            startActivity(intent);
+                        @Override
+                        public void onFailure(Call<Usuario> call, Throwable t) {
+                            call.cancel();
+                            Log.d("Error","Failure");
                         }
-                    }
-                    @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
-                        call.cancel();
-                        Log.d("Error","Failure");
-                    }
-                });
-            }
+                    });
+                }
+                }
+
         },2000);
 
     }

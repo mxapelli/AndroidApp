@@ -17,17 +17,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class App extends AppCompatActivity {
     private static final String MY_PREFS_NAME = "user_pass_pref";
     TextView welcome;
+    Bundle args= new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-        //welcome =(TextView) findViewById(R.id.welcome);
-        String valor = getIntent().getExtras().getString("usuario");
-        //welcome.setText("Welcome: "+ valor);
+        String usuario = getIntent().getExtras().getString("usuario");
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        // Colocamos el String
+        args.putString("usuario", usuario);
+        // Supongamos que tu Fragment se llama TestFragment. Colocamos este nuevo Bundle como argumento en el fragmento.
         Fragment selectedFragment = new ProfileFragment();
+        selectedFragment.setArguments(args);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
     }
@@ -49,6 +52,7 @@ public class App extends AppCompatActivity {
             switch (item.getItemId()){
                 case R.id.navigation_me:
                     selectedFragment =new ProfileFragment();
+                    selectedFragment.setArguments(args);
                     break;
                 case R.id.navigation_shop:
                     selectedFragment =new ShopFragment();

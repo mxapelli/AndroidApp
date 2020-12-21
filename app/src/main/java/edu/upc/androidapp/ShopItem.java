@@ -5,11 +5,13 @@ public class ShopItem {
     private String name;
     private String description;
     private int imageId;
+    private String price;
 
-    public ShopItem(String name, String description, int imageId){
+    public ShopItem(String name, String description, int imageId, String price){
         this.name = name;
         this.description = description;
         this.imageId = imageId;
+        this.price = price;
     }
 
     public String getName() {
@@ -34,5 +36,13 @@ public class ShopItem {
 
     public void setImageId(int imageId) {
         this.imageId = imageId;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
