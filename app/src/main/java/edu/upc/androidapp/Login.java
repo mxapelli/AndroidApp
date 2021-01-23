@@ -31,10 +31,11 @@ public class Login extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         apiInterface = APIClient.getClient().create(APIInterface.class);
+        //Shared preferences
         uname= (EditText) findViewById(R.id.user);
         pswrd = (EditText) findViewById(R.id.password);
-        //Shared preferences
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
         String username = prefs.getString("username", "");
         String password = prefs.getString("password", "");
@@ -48,6 +49,7 @@ public class Login extends AppCompatActivity  {
         pswrd = (EditText) findViewById(R.id.password);
         String username = uname.getText().toString();
         String password = pswrd.getText().toString();
+
         Call<Usuario> call=apiInterface.loginUser(new Usuario(username,password,"",""));
         call.enqueue(new Callback<Usuario>() {
             @Override

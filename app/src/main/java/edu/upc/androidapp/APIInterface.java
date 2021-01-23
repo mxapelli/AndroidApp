@@ -11,9 +11,7 @@ public interface APIInterface {
     @POST("/dsaApp/Authentication/Login")
     Call<Usuario> loginUser(@Body Usuario user);
 
-
     @POST("/dsaApp/Authentication/addUser")
     Call<Usuario> createUser(@Body Usuario user);
-
 
 }
