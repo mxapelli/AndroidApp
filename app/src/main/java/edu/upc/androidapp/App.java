@@ -48,10 +48,6 @@ public class App extends AppCompatActivity {
         finish();
 
     }
-    public void redirectWebsite(View view){
-        Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://147.83.7.208:8080/"));
-        startActivity(viewIntent);
-    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -67,6 +63,9 @@ public class App extends AppCompatActivity {
                     break;
                 case R.id.navigation_info:
                     selectedFragment =new InfoFragment();
+                    break;
+                case R.id.navigation_game:
+                    selectedFragment =new GameFragment();
                     break;
 
             }

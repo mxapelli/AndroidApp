@@ -22,4 +22,6 @@
         android:name="edu.upc.androidapp.ui.notifications.NotificationsFragment"
         android:label="@string/title_info"
         tools:layout="@layout/fragment_info" />
+    
+
 </navigation>

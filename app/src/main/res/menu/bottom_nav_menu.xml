@@ -5,7 +5,10 @@
         android:id="@+id/navigation_me"
         android:icon="@drawable/ic_baseline_person_outline_24"
         android:title="@string/title_me" />
-
+    <item
+        android:id="@+id/navigation_game"
+        android:icon="@android:drawable/btn_star"
+        android:title="Game" />
     <item
         android:id="@+id/navigation_shop"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
@@ -15,5 +18,6 @@
         android:id="@+id/navigation_info"
         android:icon="@drawable/ic_baseline_info_24"
         android:title="@string/title_info" />
+
 
 </menu>
