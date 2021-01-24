@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,24 +24,49 @@ public class ProfileFragment extends Fragment {
         String usuario = getArguments().getString("usuario");
         TextView text_me = v.findViewById(R.id.text_me);
         text_me.setText("Welcome: "+ usuario);
-        return v;
-    }
-    private void sendInventory (View v)
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-        builder.setMessage(R.string.dialog_fire_missiles)
-                .setPositiveButton(R.string.fire, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // FIRE ZE MISSILES!
-                    }
-                })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User cancelled the dialog
+        Button inventory= (Button) v.findViewById(R.id.Inventory);
+        inventory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Inventory");
+                String[] animals = {"horse", "cow", "camel", "sheep", "goat"};
+                builder.setItems(animals, null);
+                builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 });
-        // Create the AlertDialog object and return it
-        builder.show();
+                // Create the AlertDialog object and return it
+                builder.show();
+
+            }
+        });
+        Button achievements= (Button) v.findViewById(R.id.Achievements);
+        achievements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Achievements");
+                String[] animals = {"horse", "cow", "camel", "sheep", "goat"};
+                builder.setItems(animals, null);
+                builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                // Create the AlertDialog object and return it
+                builder.show();
+
+            }
+        });
+        return v;
+    }
+    private void sendInventory (View view)
+    {
 
     }
+
 }
