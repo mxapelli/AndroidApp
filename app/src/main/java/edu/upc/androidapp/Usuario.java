@@ -2,12 +2,11 @@ package edu.upc.androidapp;
 
 
 public class Usuario {
+    private String idGame;
     private String uname;
-
     private String pswrd;
-
     private String email;
-
+    private int cash;
     private String id;
 
     public String getUname() {
@@ -42,7 +41,31 @@ public class Usuario {
         this.id = id;
     }
 
+    public int getCash() {
+        return cash;
+    }
+
+    public void setCash(int cash) {
+        this.cash = cash;
+    }
+
+    public String getIdGame() {
+        return idGame;
+    }
+
+    public void setIdGame(String idGame) {
+        this.idGame = idGame;
+    }
+
     //User Constructor
+    public Usuario(String idGame, String uname, String pswrd, String email, int cash, String id){
+        this.idGame = idGame;
+        this.uname = uname;
+        this.email = email;
+        this.pswrd = pswrd;
+        this.cash = cash;
+        this.id=id;
+    }
     public Usuario(String uname, String pswrd, String email, String id){
         this.uname = uname;
         this.email = email;
@@ -50,7 +73,9 @@ public class Usuario {
         this.id=id;
     }
     //Empty Constructor
-    public Usuario(){ }
+    public Usuario(){
+
+    }
     @Override
     public String toString() {
         return "Usuario{" +
@@ -58,4 +83,6 @@ public class Usuario {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+
 }

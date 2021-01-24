@@ -2,8 +2,6 @@ package edu.upc.androidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +31,7 @@ public class Register extends AppCompatActivity {
         String usuario=uname.getText().toString();
         String password=pswrd.getText().toString();
         String email =emailAddress.getText().toString();
-        Call<Usuario> call=apiInterface.createUser(new Usuario(usuario,password,email,""));
+        Call<Usuario> call=apiInterface.createUser(new Usuario(usuario,password,email, ""));
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {

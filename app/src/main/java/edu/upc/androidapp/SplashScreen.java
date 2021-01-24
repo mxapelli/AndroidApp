@@ -8,8 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    Call<Usuario> call=apiInterface.loginUser(new Usuario(username,password,"",""));
+                    Call<Usuario> call=apiInterface.loginUser(new Usuario(username,password,"", ""));
                     call.enqueue(new Callback<Usuario>() {
                         @Override
                         public void onResponse(Call<Usuario> call, Response<Usuario> response) {

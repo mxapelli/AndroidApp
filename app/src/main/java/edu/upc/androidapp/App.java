@@ -11,16 +11,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class App extends AppCompatActivity {
     private static final String MY_PREFS_NAME = "user_pass_pref";
     TextView welcome;
     Bundle args= new Bundle();
+    ItemList items= new ItemList();
+    APIInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +38,28 @@ public class App extends AppCompatActivity {
         String usuario = getIntent().getExtras().getString("usuario");
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        apiInterface = APIClient.getClient().create(APIInterface.class);
         // Colocamos el String
         args.putString("usuario", usuario);
         // Supongamos que tu Fragment se llama TestFragment. Colocamos este nuevo Bundle como argumento en el fragmento.
         Fragment selectedFragment = new ProfileFragment();
         selectedFragment.setArguments(args);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+        Call<ItemList> itemListCall = apiInterface.getItems();
+        itemListCall.enqueue(new Callback<ItemList>() {
+            @Override
+            public void onResponse(Call<ItemList> call, Response<ItemList> response) {
+                Log.d("TAG",response.code()+"");
+                if(response.code()==201){
+                    items=response.body();
+                }
+            }
+            @Override
+            public void onFailure(Call<ItemList> call, Throwable t) {
+                call.cancel();
+                Log.d("Error","Failure");
+            }
+        });
 
     }
     public void sendLogout(View view){

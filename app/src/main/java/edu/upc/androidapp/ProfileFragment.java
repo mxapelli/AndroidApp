@@ -64,9 +64,5 @@ public class ProfileFragment extends Fragment {
         });
         return v;
     }
-    private void sendInventory (View view)
-    {
-
-    }
 
 }
