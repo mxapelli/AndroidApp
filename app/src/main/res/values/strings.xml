@@ -5,4 +5,7 @@
     <string name="title_me">Me</string>
     <string name="title_shop">Shop</string>
     <string name="title_info">Info</string>
+    <string name="cancel" />
+    <string name="dialog_fire_missiles" />
+    <string name="fire" />
 </resources>
