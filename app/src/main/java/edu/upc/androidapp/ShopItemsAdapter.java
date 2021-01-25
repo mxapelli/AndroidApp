@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.ShopItemViewHolder> {
     ArrayList<ShopItem> shopList;
@@ -30,7 +31,13 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
         holder.txtName.setText(shopList.get(position).getName());
         holder.txtDescription.setText(shopList.get(position).getDescription());
         holder.txtPrice.setText(shopList.get(position).getPrice());
-        //holder.image.setImageResource(shopList.get(position).getImageId());
+        String imageURL = shopList.get(position).getImageId();
+        String[] urlImageFinal = imageURL.split("/");
+        String imageName = urlImageFinal[1];
+        String [] lastImageURL = imageName.split("\\.");
+        String url = lastImageURL[0];
+        int id = holder.image.getContext().getResources().getIdentifier(url, "drawable", holder.image.getContext().getPackageName());
+        holder.image.setImageResource(id);
     }
 
     @Override
@@ -46,7 +53,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
             super(itemView);
             txtName = (TextView) itemView.findViewById(R.id.nameProduct);
             txtDescription = (TextView) itemView.findViewById(R.id.descriptionProduct);
-            //image = (ImageView) itemView.findViewById(R.id.imageProduct);
+            image = (ImageView) itemView.findViewById(R.id.imageProduct);
             txtPrice=(TextView) itemView.findViewById(R.id.priceProduct);
         }
     }
