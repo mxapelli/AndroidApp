@@ -32,7 +32,7 @@ public class ShopFragment extends Fragment {
         shopList = new ArrayList<>();
         recyclerShop = vista.findViewById(R.id.recyclerShop);
         recyclerShop.setLayoutManager(new LinearLayoutManager(getContext()));
-        llenarLista(items);
+
         Toast toast = Toast.makeText(getContext(),"Login failed! Please try again", Toast.LENGTH_LONG);
         toast.show();
 
@@ -52,6 +52,7 @@ public class ShopFragment extends Fragment {
                 Log.d("TAG",response.code()+"");
                 if(response.code()==201){
                     items=response.body();
+                    llenarLista(items);
                 }
             }
             @Override
@@ -60,6 +61,7 @@ public class ShopFragment extends Fragment {
                 Log.d("Error","Failure");
             }
         });
+
     }
 
     private void llenarLista(ItemList items) {
