@@ -33,9 +33,6 @@ public class ShopFragment extends Fragment {
         recyclerShop = vista.findViewById(R.id.recyclerShop);
         recyclerShop.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        Toast toast = Toast.makeText(getContext(),"Login failed! Please try again", Toast.LENGTH_LONG);
-        toast.show();
-
         ShopItemsAdapter adapter = new ShopItemsAdapter(shopList);
         recyclerShop.setAdapter(adapter);
         return vista;
