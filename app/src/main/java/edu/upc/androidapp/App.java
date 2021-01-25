@@ -45,21 +45,6 @@ public class App extends AppCompatActivity {
         Fragment selectedFragment = new ProfileFragment();
         selectedFragment.setArguments(args);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-        Call<ItemList> itemListCall = apiInterface.getItems();
-        itemListCall.enqueue(new Callback<ItemList>() {
-            @Override
-            public void onResponse(Call<ItemList> call, Response<ItemList> response) {
-                Log.d("TAG",response.code()+"");
-                if(response.code()==201){
-                    items=response.body();
-                }
-            }
-            @Override
-            public void onFailure(Call<ItemList> call, Throwable t) {
-                call.cancel();
-                Log.d("Error","Failure");
-            }
-        });
 
     }
     public void sendLogout(View view){

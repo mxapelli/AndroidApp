@@ -135,10 +135,6 @@ public class ProfileFragment extends Fragment {
                 Log.d("Error","Failure");
             }
         });
-
-
-
-
     }
     public void perfil(Usuario user){
         email.setText(user.getEmail());

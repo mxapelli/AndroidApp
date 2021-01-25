@@ -30,7 +30,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
         holder.txtName.setText(shopList.get(position).getName());
         holder.txtDescription.setText(shopList.get(position).getDescription());
         holder.txtPrice.setText(shopList.get(position).getPrice());
-        holder.image.setImageResource(shopList.get(position).getImageId());
+        //holder.image.setImageResource(shopList.get(position).getImageId());
     }
 
     @Override
@@ -46,7 +46,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
             super(itemView);
             txtName = (TextView) itemView.findViewById(R.id.nameProduct);
             txtDescription = (TextView) itemView.findViewById(R.id.descriptionProduct);
-            image = (ImageView) itemView.findViewById(R.id.imageProduct);
+            //image = (ImageView) itemView.findViewById(R.id.imageProduct);
             txtPrice=(TextView) itemView.findViewById(R.id.priceProduct);
         }
     }

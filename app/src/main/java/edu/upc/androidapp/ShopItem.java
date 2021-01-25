@@ -4,10 +4,10 @@ public class ShopItem {
 
     private String name;
     private String description;
-    private int imageId;
+    private String imageId;
     private String price;
 
-    public ShopItem(String name, String description, int imageId, String price){
+    public ShopItem(String name, String description, String imageId, String price){
         this.name = name;
         this.description = description;
         this.imageId = imageId;
@@ -30,11 +30,11 @@ public class ShopItem {
         this.description = description;
     }
 
-    public int getImageId() {
+    public String getImageId() {
         return imageId;
     }
 
-    public void setImageId(int imageId) {
+    public void setImageId(String imageId) {
         this.imageId = imageId;
     }
 

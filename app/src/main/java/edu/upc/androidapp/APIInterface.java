@@ -19,7 +19,7 @@ public interface APIInterface {
     Call<Usuario> createUser(@Body Usuario user);
 
     @GET ("/dsaApp/Item")
-    Call<ItemList> getItems();
+    Call<List<Item>> getItems();
 
     @GET ("/dsaApp/User/{userID}")
     Call<Usuario> getUser(@Path("userID") String userID);
