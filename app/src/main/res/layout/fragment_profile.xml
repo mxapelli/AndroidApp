@@ -8,13 +8,13 @@
 
     <TextView
         android:id="@+id/text_notifications"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_width="fill_parent"
+        android:layout_height="62dp"
         android:background="@android:color/holo_orange_dark"
         android:text="Profile"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="60sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,13 +30,13 @@
         android:layout_marginEnd="8dp"
         android:text=""
         android:textAlignment="center"
-        android:textSize="40sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+        app:layout_constraintVertical_bias="0.775" />
 
     <Button
         android:id="@+id/logout"
@@ -48,7 +48,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_me" />
+        app:layout_constraintTop_toBottomOf="@+id/text_me"
+        app:layout_constraintVertical_bias="0.317" />
 
     <TextView
         android:id="@+id/username"
@@ -57,9 +58,10 @@
         android:text="Username"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/text_notifications"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <TextView
         android:id="@+id/email"
@@ -90,28 +92,30 @@
         android:text="Inventory"
         app:layout_constraintBottom_toTopOf="@+id/text_me"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Achievements" />
+        app:layout_constraintTop_toBottomOf="@+id/Achievements"
+        app:layout_constraintVertical_bias="0.266" />
 
     <Button
         android:id="@+id/Achievements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="340dp"
+        android:layout_marginTop="48dp"
         android:text="Achievements"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="144dp"
         android:layout_height="172dp"
-        android:layout_marginBottom="480dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_notifications"
         app:layout_constraintVertical_bias="0.0"

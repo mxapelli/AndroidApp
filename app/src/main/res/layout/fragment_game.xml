@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/text_notifications"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="62dp"
         android:background="@android:color/holo_orange_dark"
         android:text="Game"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="60sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,9 +22,10 @@
 
     <Button
         android:id="@+id/play"
-        android:layout_width="266dp"
-        android:layout_height="117dp"
+        android:layout_width="270dp"
+        android:layout_height="84dp"
         android:text="Play"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
