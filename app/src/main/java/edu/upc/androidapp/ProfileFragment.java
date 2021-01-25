@@ -26,6 +26,9 @@ public class ProfileFragment extends Fragment {
     Achievements achievements= new Achievements();
     Usuario user=new Usuario();
     String id;
+    TextView email;
+    TextView cash;
+    TextView username;
     private static final String MY_PREFS_NAME = "user_pass_pref";
     @Nullable
     @Override
@@ -35,12 +38,10 @@ public class ProfileFragment extends Fragment {
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
         TextView text_me = v.findViewById(R.id.text_me);
         text_me.setText("Welcome: "+ id);
-        TextView email=v.findViewById(R.id.email);
-        email.setText(user.getEmail());
-        TextView username=v.findViewById(R.id.username);
-        username.setText(user.getUname());
-        TextView cash=v.findViewById(R.id.coins);
-        cash.setText("Coins:"+ user.getCash());
+        email=v.findViewById(R.id.email);
+        username=v.findViewById(R.id.username);
+        cash=v.findViewById(R.id.coins);
+
         Button inventoryButton= (Button) v.findViewById(R.id.Inventory);
         //CallInventory
         Call<Inventory> inventoryCall =apiInterface.getInventory(id);
@@ -125,6 +126,7 @@ public class ProfileFragment extends Fragment {
                 Log.d("TAG",response.code()+"");
                 if(response.code()==200){
                     user=response.body();
+                    perfil(user);
                 }
             }
             @Override
@@ -136,6 +138,12 @@ public class ProfileFragment extends Fragment {
 
 
 
+
+    }
+    public void perfil(Usuario user){
+        email.setText(user.getEmail());
+        username.setText(user.getUname());
+        cash.setText("Coins:"+ user.getCash());
 
     }
 
