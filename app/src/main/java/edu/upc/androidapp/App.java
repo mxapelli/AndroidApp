@@ -35,12 +35,12 @@ public class App extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-        String usuario = getIntent().getExtras().getString("usuario");
+        String id = getIntent().getExtras().getString("id");
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         apiInterface = APIClient.getClient().create(APIInterface.class);
         // Colocamos el String
-        args.putString("usuario", usuario);
+        args.putString("ID", id);
         // Supongamos que tu Fragment se llama TestFragment. Colocamos este nuevo Bundle como argumento en el fragmento.
         Fragment selectedFragment = new ProfileFragment();
         selectedFragment.setArguments(args);

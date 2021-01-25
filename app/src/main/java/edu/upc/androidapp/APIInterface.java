@@ -8,6 +8,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface APIInterface {
 
@@ -19,5 +20,15 @@ public interface APIInterface {
 
     @GET ("/dsaApp/Item")
     Call<ItemList> getItems();
+
+    @GET ("/dsaApp/User/{userID}")
+    Call<Usuario> getUser(@Path("userID") String userID);
+
+    @GET ("/dsaApp/User/{userID}/Achievements")
+    Call<Achievements> getAchievements(@Path("userID") String userID);
+
+    @GET ("/dsaApp/User/{userID}/Inventory")
+    Call<Inventory> getInventory(@Path("userID") String userID);
+
 
 }

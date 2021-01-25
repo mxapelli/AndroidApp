@@ -45,8 +45,9 @@ public class SplashScreen extends AppCompatActivity {
                                 Usuario usuario = response.body();
                                 String pswrd=usuario.getPswrd();
                                 String uname=usuario.getUname();
+                                String id=usuario.getID();
                                 Log.d("Usuario",uname+" "+pswrd);
-                                openApp(uname);
+                                openApp(id);
                             }
                             else{
                                 Log.d("Error","No shared preference");
@@ -67,9 +68,9 @@ public class SplashScreen extends AppCompatActivity {
 
     }
 
-    public void openApp(String uname) {
+    public void openApp(String id) {
         Intent intent = new Intent(this, App.class);
-        intent.putExtra("usuario", uname);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 }

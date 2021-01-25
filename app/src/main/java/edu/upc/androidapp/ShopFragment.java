@@ -29,7 +29,6 @@ public class ShopFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_shop, container,false);
-        apiInterface = APIClient.getClient().create(APIInterface.class);
         shopList = new ArrayList<>();
         recyclerShop = vista.findViewById(R.id.recyclerShop);
         recyclerShop.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -45,6 +44,7 @@ public class ShopFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<ItemList> itemListCall =apiInterface.getItems();
         itemListCall.enqueue(new Callback<ItemList>() {
             @Override

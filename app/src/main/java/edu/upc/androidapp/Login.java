@@ -23,7 +23,6 @@ public class Login extends AppCompatActivity  {
     EditText uname;
     EditText pswrd;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +55,11 @@ public class Login extends AppCompatActivity  {
                     Usuario usuario = response.body();
                     String pswrd=usuario.getPswrd();
                     String uname=usuario.getUname();
-                    Log.d("Usuario",uname+" "+pswrd);
+                    String id=usuario.getID();
+                    Log.d("Usuario",uname+" "+pswrd+" "+id);
                     //Guardando en Shared
                     guardarSharedPreferences(uname, pswrd);
-                    openApp(uname);
+                    openApp(id);
                 }
                 else{
                     Log.d("Error","Login failed");
@@ -85,9 +85,9 @@ public class Login extends AppCompatActivity  {
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
     }
-    public void openApp(String uname) {
+    public void openApp(String id) {
         Intent intent = new Intent(this, App.class);
-        intent.putExtra("usuario", uname);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
     public void guardarSharedPreferences(String username, String password){

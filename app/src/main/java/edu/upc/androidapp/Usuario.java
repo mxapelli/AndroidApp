@@ -7,7 +7,7 @@ public class Usuario {
     private String pswrd;
     private String email;
     private int cash;
-    private String id;
+    private String ID;
 
     public String getUname() {
         return uname;
@@ -33,12 +33,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getId() {
-        return id;
+    public String getID() {
+        return ID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public int getCash() {
@@ -58,19 +58,19 @@ public class Usuario {
     }
 
     //User Constructor
-    public Usuario(String idGame, String uname, String pswrd, String email, int cash, String id){
+    public Usuario(String idGame, String uname, String pswrd, String email, int cash, String ID){
         this.idGame = idGame;
         this.uname = uname;
         this.email = email;
         this.pswrd = pswrd;
         this.cash = cash;
-        this.id=id;
+        this.ID = ID;
     }
-    public Usuario(String uname, String pswrd, String email, String id){
+    public Usuario(String uname, String pswrd, String email, String ID){
         this.uname = uname;
         this.email = email;
         this.pswrd = pswrd;
-        this.id=id;
+        this.ID = ID;
     }
     //Empty Constructor
     public Usuario(){
