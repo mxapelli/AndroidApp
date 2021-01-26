@@ -22,24 +22,19 @@
             android:textColor="@android:color/holo_orange_light"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/buyButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.994"
-            app:layout_constraintStart_toEndOf="@+id/imageProduct"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.875" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/descriptionProduct"/>
 
         <ImageView
             android:id="@+id/imageProduct"
-            android:layout_width="109dp"
-            android:layout_height="134dp"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.043"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:srcCompat="@mipmap/ic_logo_icon" />
 
         <TextView
@@ -50,10 +45,9 @@
             android:text="Name of the Product"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageProduct"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionProduct"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.197" />
+            app:layout_constraintLeft_toRightOf="@+id/imageProduct"/>
 
         <TextView
             android:id="@+id/descriptionProduct"
@@ -63,21 +57,18 @@
             android:text="Description"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageProduct"
-            app:layout_constraintTop_toBottomOf="@+id/nameProduct"
-            app:layout_constraintVertical_bias="0.326" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/imageProduct" />
 
         <Button
             android:id="@+id/buyButton"
-            android:layout_width="75dp"
-            android:layout_height="42dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:text="BUY"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.98"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.72" />
+            app:layout_constraintTop_toBottomOf="@+id/priceProduct"
+            app:layout_constraintLeft_toRightOf="@+id/descriptionProduct"
+            app:layout_constraintRight_toRightOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
