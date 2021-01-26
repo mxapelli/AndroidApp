@@ -7,7 +7,7 @@ public class Inventory {
     private int pillsQuantity;
     private int calculatorQuantity;
     private int ruleQuantity;
-    private int compassQuantity;
+    private int compasQuantity;
     private int pencilQuantity;
     private int glassesQuantity;
     private int puzzleQuantity;
@@ -23,7 +23,7 @@ public class Inventory {
         this.pillsQuantity = pillsQuantity;
         this.calculatorQuantity = calculatorQuantity;
         this.ruleQuantity = ruleQuantity;
-        this.compassQuantity = compassQuantity;
+        this.compasQuantity = compassQuantity;
         this.pencilQuantity = pencilQuantity;
         this.glassesQuantity = glassesQuantity;
         this.puzzleQuantity = puzzleQuantity;
@@ -82,11 +82,11 @@ public class Inventory {
     }
 
     public int getCompassQuantity() {
-        return compassQuantity;
+        return compasQuantity;
     }
 
     public void setCompassQuantity(int compassQuantity) {
-        this.compassQuantity = compassQuantity;
+        this.compasQuantity = compassQuantity;
     }
 
     public int getPencilQuantity() {

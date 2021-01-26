@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -29,6 +30,13 @@ public interface APIInterface {
 
     @GET ("/dsaApp/User/{userID}/Inventory")
     Call<Inventory> getInventory(@Path("userID") String userID);
+
+    @PATCH("/dsaApp/User/{userID}/UpdateInventory")
+    Call<Inventory> updateInventory(@Path("userID") String userID,@Body Inventory inventory);
+
+    @PATCH("/dsaApp/User/{userID}/UpdateCash")
+    Call<Usuario> updateCash(@Path("userID") String userID,@Body Usuario user);
+
 
 
 }

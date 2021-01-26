@@ -70,6 +70,7 @@ public class App extends AppCompatActivity {
                     break;
                 case R.id.navigation_shop:
                     selectedFragment =new ShopFragment();
+                    selectedFragment.setArguments(args);
                     break;
                 case R.id.navigation_info:
                     selectedFragment =new InfoFragment();
