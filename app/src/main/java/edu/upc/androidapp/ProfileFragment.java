@@ -36,8 +36,6 @@ public class ProfileFragment extends Fragment {
         apiInterface = APIClient.getClient().create(APIInterface.class);
         id = getArguments().getString("ID");
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
-        TextView text_me = v.findViewById(R.id.text_me);
-        text_me.setText("Welcome: "+ id);
         email=v.findViewById(R.id.email);
         username=v.findViewById(R.id.username);
         cash=v.findViewById(R.id.coins);
