@@ -96,12 +96,12 @@ public class ShopFragment extends Fragment {
             String price = String.valueOf(items.getItem(i).getPrice());
             shopList.add(new ShopItem(items.getItem(i).getName(), items.getItem(i).getDescription(), items.getItem(i).getImage(), price));
         }
-        ShopItemsAdapter adapter = new ShopItemsAdapter(shopList, id, cash);
+        ShopItemsAdapter adapter = new ShopItemsAdapter(this,shopList, id, cash);
         recyclerShop.setAdapter(adapter);
 
     }
 
-    private void ponerCash(int cash) {
+    public void ponerCash(int cash) {
         coins.setText("Coins: " + String.valueOf(cash));
         cashShop = cash;
 

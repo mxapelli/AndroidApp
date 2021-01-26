@@ -27,12 +27,14 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
     Inventory inventory=new Inventory();
     int cash;
     Usuario user= new Usuario();
+    ShopFragment shopFragment;
 
 
-    public ShopItemsAdapter(ArrayList<ShopItem> shopList, String id, int cash) {
+    public ShopItemsAdapter(ShopFragment shopfragment, ArrayList<ShopItem> shopList, String id, int cash) {
         this.shopList = shopList;
         this.id=id;
         this.cash=cash;
+        this.shopFragment=shopfragment;
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
     }
@@ -80,6 +82,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
             buy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    buy.setEnabled(false);
                     String name=txtName.getText().toString().toLowerCase();
                     int price=Integer.parseInt(txtPrice.getText().toString());
                     if (cash>=price){
@@ -183,13 +186,15 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
                         });
                         int total=cash-price;
                         user.setCash(total);
+                        shopFragment.ponerCash(total);
                         Call<Usuario> userCall =apiInterface.updateCash(id,user);
                         userCall.enqueue(new Callback<Usuario>() {
                             @Override
                             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                                 Log.d("TAG",response.code()+"");
-                                if(response.code()==200){
-                                    user=response.body();
+                                if(response.code()==204){
+                                    buy.setEnabled(true);
+
 
 
                                 }
@@ -200,6 +205,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
                                 Log.d("Error","Failure");
                             }
                         });
+
                     }
                     if(cash<=price){
                         Toast.makeText(v.getContext(),"Insufficient coins",Toast.LENGTH_SHORT).show();
