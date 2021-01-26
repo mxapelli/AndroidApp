@@ -25,7 +25,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
     APIInterface apiInterface;
     Inventory inventory=new Inventory();
     int cash;
-    Usuario user;
+    Usuario user= new Usuario();
 
     public ShopItemsAdapter(ArrayList<ShopItem> shopList, String id, int cash) {
         this.shopList = shopList;
@@ -80,106 +80,125 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
                     Toast.makeText(v.getContext(),txtName.getText().toString().toLowerCase(),Toast.LENGTH_SHORT).show();
                     String name=txtName.getText().toString().toLowerCase();
                     int price=Integer.parseInt(txtPrice.getText().toString());
-                    Call<Inventory> inventoryCall =apiInterface.getInventory(id);
-                    inventoryCall.enqueue(new Callback<Inventory>() {
-                        @Override
-                        public void onResponse(Call<Inventory> call, Response<Inventory> response) {
-                            Log.d("TAG",response.code()+"");
-                            if(response.code()==200){
-                                inventory=response.body();
-                                if (name.equals("turtle"))
-                                {
-                                    int i= inventory.getTurtleQuantity();
-                                    inventory.setTurtleQuantity(i+1);
-                                }
-                                if (name.equals("coffee"))
-                                {
-                                   int i= inventory.getCoffQuantity();
-                                   inventory.setCoffQuantity(i+1);
-                                }
-                                if (name.equals("redbull"))
-                                {
-                                    int i= inventory.getRedbullQuantity();
-                                    inventory.setRedbullQuantity(i+1);
-                                }
-                                if (name.equals("pills"))
-                                {
-                                    int i= inventory.getPillsQuantity();
-                                    inventory.setPillsQuantity(i+1);
-                                }
-                                if (name.equals("calculator"))
-                                {
-                                    int i= inventory.getCalculatorQuantity();
-                                    inventory.setCalculatorQuantity(i+1);
-                                }
-                                if (name.equals("rule"))
-                                {
-                                    int i= inventory.getRuleQuantity();
-                                    inventory.setRuleQuantity(i+1);
-                                }
-                                if (name.equals("compas"))
-                                {
-                                    int i= inventory.getCompassQuantity();
-                                    inventory.setCompassQuantity(i+1);
-                                }
-                                if (name.equals("pencil"))
-                                {
-                                    int i= inventory.getPencilQuantity();
-                                    inventory.setPencilQuantity(i+1);
-                                }
-                                if (name.equals("glasses"))
-                                {
-                                    int i= inventory.getGlassesQuantity();
-                                    inventory.setGlassesQuantity(i+1);
-                                }
-                                if (name.equals("puzzle"))
-                                {
-                                    int i= inventory.getPuzzleQuantity();
-                                    inventory.setPuzzleQuantity(i+1);
-                                }
-                                if (name.equals("book"))
-                                {
-                                    int i= inventory.getBookQuantity();
-                                    inventory.setBookQuantity(i+1);
-                                }
-                                if (name.equals("usb"))
-                                {
-                                    int i= inventory.getUsbQuantity();
-                                    inventory.setUsbQuantity(i+1);
-                                }
-                                if (name.equals("cheatsheet"))
-                                {
-                                    int i= inventory.getCheatQuantity();
-                                    inventory.setCheatQuantity(i+1);
-                                }
-                                Call<Inventory> inventory2Call =apiInterface.updateInventory(id,inventory);
-                                inventory2Call.enqueue(new Callback<Inventory>() {
-                                    @Override
-                                    public void onResponse(Call<Inventory> call, Response<Inventory> response) {
-                                        Log.d("TAG",response.code()+"");
-                                        if(response.code()==200){
-                                            inventory=response.body();
+                    if (cash>=price){
+                        Call<Inventory> inventoryCall =apiInterface.getInventory(id);
+                        inventoryCall.enqueue(new Callback<Inventory>() {
+                            @Override
+                            public void onResponse(Call<Inventory> call, Response<Inventory> response) {
+                                Log.d("TAG",response.code()+"");
+                                if(response.code()==200){
+                                    inventory=response.body();
+                                    if (name.equals("turtle"))
+                                    {
+                                        int i= inventory.getTurtleQuantity();
+                                        inventory.setTurtleQuantity(i+1);
+                                    }
+                                    if (name.equals("coffee"))
+                                    {
+                                        int i= inventory.getCoffQuantity();
+                                        inventory.setCoffQuantity(i+1);
+                                    }
+                                    if (name.equals("redbull"))
+                                    {
+                                        int i= inventory.getRedbullQuantity();
+                                        inventory.setRedbullQuantity(i+1);
+                                    }
+                                    if (name.equals("pills"))
+                                    {
+                                        int i= inventory.getPillsQuantity();
+                                        inventory.setPillsQuantity(i+1);
+                                    }
+                                    if (name.equals("calculator"))
+                                    {
+                                        int i= inventory.getCalculatorQuantity();
+                                        inventory.setCalculatorQuantity(i+1);
+                                    }
+                                    if (name.equals("rule"))
+                                    {
+                                        int i= inventory.getRuleQuantity();
+                                        inventory.setRuleQuantity(i+1);
+                                    }
+                                    if (name.equals("compas"))
+                                    {
+                                        int i= inventory.getCompassQuantity();
+                                        inventory.setCompassQuantity(i+1);
+                                    }
+                                    if (name.equals("pencil"))
+                                    {
+                                        int i= inventory.getPencilQuantity();
+                                        inventory.setPencilQuantity(i+1);
+                                    }
+                                    if (name.equals("glasses"))
+                                    {
+                                        int i= inventory.getGlassesQuantity();
+                                        inventory.setGlassesQuantity(i+1);
+                                    }
+                                    if (name.equals("puzzle"))
+                                    {
+                                        int i= inventory.getPuzzleQuantity();
+                                        inventory.setPuzzleQuantity(i+1);
+                                    }
+                                    if (name.equals("book"))
+                                    {
+                                        int i= inventory.getBookQuantity();
+                                        inventory.setBookQuantity(i+1);
+                                    }
+                                    if (name.equals("usb"))
+                                    {
+                                        int i= inventory.getUsbQuantity();
+                                        inventory.setUsbQuantity(i+1);
+                                    }
+                                    if (name.equals("cheatsheet"))
+                                    {
+                                        int i= inventory.getCheatQuantity();
+                                        inventory.setCheatQuantity(i+1);
+                                    }
+                                    Call<Inventory> inventory2Call =apiInterface.updateInventory(id,inventory);
+                                    inventory2Call.enqueue(new Callback<Inventory>() {
+                                        @Override
+                                        public void onResponse(Call<Inventory> call, Response<Inventory> response) {
+                                            Log.d("TAG",response.code()+"");
+                                            if(response.code()==200){
+                                                inventory=response.body();
+                                            }
                                         }
-                                    }
-                                    @Override
-                                    public void onFailure(Call<Inventory> call, Throwable t) {
-                                        call.cancel();
-                                        Log.d("Error","Failure");
-                                    }
-                                });
+                                        @Override
+                                        public void onFailure(Call<Inventory> call, Throwable t) {
+                                            call.cancel();
+                                            Log.d("Error","Failure");
+                                        }
+                                    });
 
 
+                                }
                             }
-                        }
-                        @Override
-                        public void onFailure(Call<Inventory> call, Throwable t) {
-                            call.cancel();
-                            Log.d("Error","Failure");
-                        }
-                    });
-
-
-
+                            @Override
+                            public void onFailure(Call<Inventory> call, Throwable t) {
+                                call.cancel();
+                                Log.d("Error","Failure");
+                            }
+                        });
+                        int total=cash-price;
+                        user.setCash(total);
+                        Call<Usuario> userCall =apiInterface.updateCash(id,user);
+                        userCall.enqueue(new Callback<Usuario>() {
+                            @Override
+                            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                                Log.d("TAG",response.code()+"");
+                                if(response.code()==200){
+                                    user=response.body();
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<Usuario> call, Throwable t) {
+                                call.cancel();
+                                Log.d("Error","Failure");
+                            }
+                        });
+                    }
+                    if(cash<=price){
+                        Toast.makeText(v.getContext(),"Insufficient coins",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
