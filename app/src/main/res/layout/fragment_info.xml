@@ -78,6 +78,7 @@
         android:id="@+id/imageView4"
         android:layout_width="100dp"
         android:layout_height="120dp"
+        android:scaleType="center"
         android:src="@drawable/victor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
