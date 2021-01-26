@@ -208,6 +208,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
                     }
                     if(cash<=price){
                         Toast.makeText(v.getContext(),"Insufficient coins",Toast.LENGTH_SHORT).show();
+                        buy.setEnabled(true);
                     }
                 }
             });
