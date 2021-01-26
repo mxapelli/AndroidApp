@@ -63,7 +63,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
 
 
     public class ShopItemViewHolder extends RecyclerView.ViewHolder {
-        TextView txtName, txtDescription, txtPrice;
+        TextView txtName, txtDescription, txtPrice, coins;
         ImageView image;
         Button buy;
 
@@ -77,10 +77,11 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
             buy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(),txtName.getText().toString().toLowerCase(),Toast.LENGTH_SHORT).show();
+
                     String name=txtName.getText().toString().toLowerCase();
                     int price=Integer.parseInt(txtPrice.getText().toString());
                     if (cash>=price){
+                        Toast.makeText(v.getContext(),txtName.getText().toString()+ " purchased",Toast.LENGTH_SHORT).show();
                         Call<Inventory> inventoryCall =apiInterface.getInventory(id);
                         inventoryCall.enqueue(new Callback<Inventory>() {
                             @Override
