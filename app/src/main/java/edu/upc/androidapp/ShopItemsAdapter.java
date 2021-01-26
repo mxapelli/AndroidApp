@@ -1,5 +1,6 @@
 package edu.upc.androidapp;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,10 +28,12 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
     int cash;
     Usuario user= new Usuario();
 
+
     public ShopItemsAdapter(ArrayList<ShopItem> shopList, String id, int cash) {
         this.shopList = shopList;
         this.id=id;
         this.cash=cash;
+
         apiInterface = APIClient.getClient().create(APIInterface.class);
     }
 
@@ -77,7 +80,6 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
             buy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     String name=txtName.getText().toString().toLowerCase();
                     int price=Integer.parseInt(txtPrice.getText().toString());
                     if (cash>=price){
@@ -188,6 +190,8 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
                                 Log.d("TAG",response.code()+"");
                                 if(response.code()==200){
                                     user=response.body();
+
+
                                 }
                             }
                             @Override
