@@ -26,7 +26,6 @@ public class ProfileFragment extends Fragment {
     Achievements achievements= new Achievements();
     Usuario user=new Usuario();
     String id;
-    TextView email;
     TextView cash;
     TextView username;
     private static final String MY_PREFS_NAME = "user_pass_pref";
@@ -36,7 +35,6 @@ public class ProfileFragment extends Fragment {
         apiInterface = APIClient.getClient().create(APIInterface.class);
         id = getArguments().getString("ID");
         View v= inflater.inflate(R.layout.fragment_profile, container,false);
-        email=v.findViewById(R.id.email);
         username=v.findViewById(R.id.username);
         cash=v.findViewById(R.id.coins);
 
@@ -135,7 +133,6 @@ public class ProfileFragment extends Fragment {
         });
     }
     public void perfil(Usuario user){
-        email.setText(user.getEmail());
         username.setText(user.getUname());
         cash.setText("Coins:"+ user.getCash());
 
