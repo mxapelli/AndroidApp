@@ -185,6 +185,7 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
                             }
                         });
                         int total=cash-price;
+                        cash=total;
                         user.setCash(total);
                         shopFragment.ponerCash(total);
                         Call<Usuario> userCall =apiInterface.updateCash(id,user);
@@ -194,8 +195,6 @@ public class ShopItemsAdapter extends RecyclerView.Adapter<ShopItemsAdapter.Shop
                                 Log.d("TAG",response.code()+"");
                                 if(response.code()==204){
                                     buy.setEnabled(true);
-
-
 
                                 }
                             }
